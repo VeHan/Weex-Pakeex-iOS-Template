@@ -48,7 +48,7 @@
     [self setupRightBarItem];
       _weexHeight = self.view.frame.size.height - 64;
 #else
-    _weexHeight = self.view.frame.size.height - 32;
+    _weexHeight = self.view.frame.size.height - 20 ;
 #endif
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshInstance:) name:@"RefreshInstance" object:nil];
@@ -78,10 +78,20 @@
 #endif
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    //返回黑色
+    return UIStatusBarStyleDefault;
+}
+
 //TODO get height
 - (void)viewDidLayoutSubviews
 {
-    _weexHeight = self.view.frame.size.height;
+#ifdef DEBUG
+    _weexHeight = self.view.frame.size.height - 64;
+#else
+    _weexHeight = self.view.frame.size.height - 20 ;
+#endif
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,8 +111,11 @@
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
     _instance.viewController = self;
+#ifdef DEBUG
     _instance.frame = CGRectMake(self.view.frame.size.width-width, 0, width, _weexHeight);
-    
+#else
+    _instance.frame = CGRectMake(self.view.frame.size.width-width, 20, width, _weexHeight);
+#endif
     __weak typeof(self) weakSelf = self;
     _instance.onCreate = ^(UIView *view) {
         [weakSelf.weexView removeFromSuperview];

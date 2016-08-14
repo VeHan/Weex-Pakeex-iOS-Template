@@ -6,8 +6,7 @@
  * For the full copyright and license information,please view the LICENSE file in the root directory of this source tree.
  */
 
-/** release delete head */
-
+#ifdef DEBUG
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
@@ -16,5 +15,4 @@
 
 @end
 
-
-/** release delete tail */
+#endif

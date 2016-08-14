@@ -5,6 +5,7 @@
  * This source code is licensed under the Apache Licence 2.0.
  * For the full copyright and license information,please view the LICENSE file in the root directory of this source tree.
  */
+#ifdef DEBUG
 
 #import "UIViewController+WXDemoNaviBar.h"
 #import "WXScannerVC.h"
@@ -95,7 +96,6 @@
 #pragma mark - UIBarButtonItem actions
 
 - (void)scanQR:(id)sender {
-#ifdef DEBUG
 #ifdef TARGET_IPHONE_SIMULATOR
     // 对于模拟器，摄像头不可用
     UIStoryboard *simScannerStoryBoard =  [UIStoryboard storyboardWithName:@"SimulatorScanner" bundle:[NSBundle mainBundle]];
@@ -105,7 +105,6 @@
     WXScannerVC * scanViewController = [[WXScannerVC alloc] init];
     [self.navigationController pushViewController:scanViewController animated:NO];
 #endif
-#endif
 }
 
 - (void)backButtonClicked:(id)sender {
@@ -113,3 +112,5 @@
 }
 
 @end
+
+#endif
