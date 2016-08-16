@@ -53,8 +53,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshInstance:) name:@"RefreshInstance" object:nil];
     
-    
+#ifdef DEBUG
+    if (![ @"scan" isEqualToString:_source]) {
+        dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, 2.0*NSEC_PER_SEC);
+        dispatch_after(start, dispatch_get_main_queue(), ^{
+            [self render];
+        });
+    }
+#else
     [self render];
+#endif
 }
 
 - (void)viewDidAppear:(BOOL)animated

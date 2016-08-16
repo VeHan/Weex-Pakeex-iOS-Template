@@ -118,11 +118,13 @@
     demo.url = [NSURL URLWithString:url];
 #ifdef DEBUG
         //DEBUG 模式下 开启动态刷新功能
-        NSURL *socketURL = [NSURL URLWithString:[NSString stringWithFormat:@"ws://%@:8082", demo.url.host]];
-        demo.hotReloadSocket = [[SRWebSocket alloc] initWithURL:socketURL protocols:@[@"echo-protocol"]];
-        demo.hotReloadSocket.delegate = demo;
+    NSURL *socketURL = [NSURL URLWithString:[NSString stringWithFormat:@"ws://%@:8082", demo.url.host]];
+    demo.hotReloadSocket = [[SRWebSocket alloc] initWithURL:socketURL protocols:@[@"echo-protocol"]];
+    demo.hotReloadSocket.delegate = demo;
+    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, 6.0*NSEC_PER_SEC);
+    dispatch_after(start, dispatch_get_main_queue(), ^{
         [demo.hotReloadSocket open];
-    
+    });
 #endif
     
 #ifdef UITEST
