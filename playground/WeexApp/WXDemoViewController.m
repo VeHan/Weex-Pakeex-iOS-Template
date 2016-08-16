@@ -53,6 +53,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshInstance:) name:@"RefreshInstance" object:nil];
     
+    
     [self render];
 }
 
@@ -87,9 +88,9 @@
 - (void)viewDidLayoutSubviews
 {
 #ifdef DEBUG
-    _weexHeight = self.view.frame.size.height - 64;
+//    _weexHeight = self.view.frame.size.height - 64;
 #else
-    _weexHeight = self.view.frame.size.height - 20 ;
+//    _weexHeight = self.view.frame.size.height - 20 ;
 #endif
 
 }
@@ -103,6 +104,7 @@
 {
     [_instance destroyInstance];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_hotReloadSocket close];
 }
 
 - (void)render

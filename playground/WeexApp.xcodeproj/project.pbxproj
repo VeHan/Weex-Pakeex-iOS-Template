@@ -400,8 +400,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos9.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -437,9 +438,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos9.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -471,6 +473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.weex.WeexApp;
 				PRODUCT_NAME = WeexApp;
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos9.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -503,6 +506,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.weex.WeexApp;
 				PRODUCT_NAME = WeexApp;
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos9.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

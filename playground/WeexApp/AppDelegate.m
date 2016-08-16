@@ -108,15 +108,22 @@
 -(UIViewController *)demoController
 {
     
-    UIViewController *demo = [[WXDemoViewController alloc] init];
+    WXDemoViewController *demo = [[WXDemoViewController alloc] init];
     
     NSString *url = [InfoUtil getInfo:@"BUNDLE_URL"];
     if (![url hasPrefix:@"http"]){
         url = [NSString stringWithFormat:@"file://%@/js.bundle/%@",[NSBundle mainBundle].bundlePath ,url];
         
     }
-    ((WXDemoViewController *)demo).url = [NSURL URLWithString:url];
-
+    demo.url = [NSURL URLWithString:url];
+#ifdef DEBUG
+        //DEBUG 模式下 开启动态刷新功能
+        NSURL *socketURL = [NSURL URLWithString:[NSString stringWithFormat:@"ws://%@:8082", demo.url.host]];
+        demo.hotReloadSocket = [[SRWebSocket alloc] initWithURL:socketURL protocols:@[@"echo-protocol"]];
+        demo.hotReloadSocket.delegate = demo;
+        [demo.hotReloadSocket open];
+    
+#endif
     
 #ifdef UITEST
     ((WXDemoViewController *)demo).url = [NSURL URLWithString:UITEST_HOME_URL];

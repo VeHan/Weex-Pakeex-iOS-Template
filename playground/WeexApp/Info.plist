@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BUNDLE_URL</key>
-	<string>http://30.10.211.241:8081/main2.we</string>
+	<string>http://30.10.209.26:8083/main.we</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
