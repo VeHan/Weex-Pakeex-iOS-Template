@@ -96,7 +96,7 @@
 #pragma mark - UIBarButtonItem actions
 
 - (void)scanQR:(id)sender {
-#ifdef TARGET_IPHONE_SIMULATOR
+#ifdef TARGET_OS_SIMULATOR
     // 对于模拟器，摄像头不可用
     UIStoryboard *simScannerStoryBoard =  [UIStoryboard storyboardWithName:@"SimulatorScanner" bundle:[NSBundle mainBundle]];
     WXSimulatorScannerVC * simScanViewController = [simScannerStoryBoard instantiateInitialViewController];
